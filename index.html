@@ -139,8 +139,11 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero-background min-h-[100vh] flex items-center">
+        <!-- Hero Section with Auto-Carousel -->
+        <section class="hero-background min-h-[100vh] flex items-center" 
+                 x-data="{ activeHeroSlide: 0, heroSlides: ['images/black-ring-dt.png', 'images/rosegold-ring.png', 'images/sunrise-gold.png', 'images/silver-spark.png'] }" 
+                 x-init="setInterval(() => { activeHeroSlide = activeHeroSlide === heroSlides.length - 1 ? 0 : activeHeroSlide + 1 }, 3000)">
+            
             <div class="max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center text-center lg:text-left">
                     <div class="w-full lg:w-3/5 flex flex-col">
@@ -157,9 +160,25 @@
                                 Data Is Power.<br><span class="italic font-light text-[#F7EFDF]">Your Health Shouldn’t Be Guesswork.</span>
                             </h1>
                         </div>
+
+                        <!-- Mobile Product Image Carousel -->
                         <div class="order-2 block lg:hidden my-6 px-4">
-                            <img src="images/black-ring-dt.png" alt="Herz P1 Smart Ring Mobile" class="w-full max-w-[260px] mx-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transform scale-110">
+                            <div class="relative w-full max-w-[260px] mx-auto aspect-square flex items-center justify-center transform scale-110">
+                                <template x-for="(slide, index) in heroSlides" :key="index">
+                                    <img :src="slide" 
+                                         x-show="activeHeroSlide === index"
+                                         x-transition:enter="transition ease-in-out duration-1000"
+                                         x-transition:enter-start="opacity-0"
+                                         x-transition:enter-end="opacity-100"
+                                         x-transition:leave="transition ease-in-out duration-1000"
+                                         x-transition:leave-start="opacity-100"
+                                         x-transition:leave-end="opacity-0"
+                                         class="absolute inset-0 w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]" 
+                                         alt="Herz P1 Smart Ring Mobile">
+                                </template>
+                            </div>
                         </div>
+
                         <div class="order-3">
                             <div class="mb-8 space-y-4 max-w-2xl mx-auto lg:mx-0">
                                 <p class="text-lg md:text-xl text-white font-medium">Your body sends signals every day.</p>
@@ -195,8 +214,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hidden lg:flex w-full lg:w-2/5 justify-center">
-                        <img src="images/black-ring-dt.png" alt="Herz P1 Smart Ring Desktop" class="w-full max-w-sm drop-shadow-[0_35px_35px_rgba(0,0,0,0.6)] transform hover:rotate-6 transition-transform duration-700">
+
+                    <!-- Desktop Product Image Carousel -->
+                    <div class="hidden lg:flex w-full lg:w-2/5 justify-center relative">
+                        <div class="relative w-full max-w-sm aspect-square flex items-center justify-center">
+                            <template x-for="(slide, index) in heroSlides" :key="index">
+                                <img :src="slide" 
+                                     x-show="activeHeroSlide === index"
+                                     x-transition:enter="transition ease-in-out duration-1000"
+                                     x-transition:enter-start="opacity-0"
+                                     x-transition:enter-end="opacity-100"
+                                     x-transition:leave="transition ease-in-out duration-1000"
+                                     x-transition:leave-start="opacity-100"
+                                     x-transition:leave-end="opacity-0"
+                                     class="absolute inset-0 w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.6)] transform hover:rotate-6 transition-transform duration-700" 
+                                     alt="Herz P1 Smart Ring Desktop">
+                            </template>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -344,7 +378,7 @@
                         </button>
                         <div x-show="active === 4" x-collapse>
                             <div class="px-6 md:px-8 pb-6 text-slate-600 text-sm md:text-base leading-relaxed">
-                                The Herz P1 Smart Ring lasts up to 6 days on a single charge, depending on usage. It fully recharges in under one hour using the magnetic charging dock included in the box.
+                                The Herz P1 Smart Ring lasts up to 6 days on a single charge, depending on usage. It fully recharges in under one hour using the magnetic charging dock included in the box. No daily charging required.
                             </div>
                         </div>
                     </div>
@@ -448,7 +482,7 @@
                         </button>
                         <div x-show="active === 12" x-collapse>
                             <div class="px-6 md:px-8 pb-6 text-slate-600 text-sm md:text-base leading-relaxed">
-                                Unlike bulky smartwatches, the Herz P1 is discreet, lightweight, doesn't distract with notifications, and requires less frequent charging. It focuses on health tracking — not distractions.
+                                Unlike bulky smartwatches, the Herz P1 is discreet, lightweight, doesn't distract with notifications, and requires less frequent charging. It has no monthly subscription and focuses purely on wellness insights.
                             </div>
                         </div>
                     </div>
@@ -513,7 +547,7 @@
             </p>
 
             <div class="text-[9px] font-bold text-zinc-700 tracking-[0.4em] uppercase">
-                <p class="mb-2">Authorized Distributor | HERZ TECHNOLOGIES | support@herzp1.com</p>
+                <p class="mb-2">Authorized Distributor | HERZ P1 LLC | support@herzp1.com</p>
                 <p>&copy; 2026 HERZ P1. All Rights Reserved.</p>
             </div>
         </div>
@@ -535,11 +569,11 @@
                     <template x-if="modalType === 'contact'">
                         <div>
                             <p>At Herz P1, we’re committed to providing excellent customer experiences and helping you get the most out of your purchase. If you have any questions we have a list of Frequently Asked Questions that will tell you how to use our site, order from us, start an account and track the progress of your order.</p>
-                            <h2>Reach Us by Email</h2>
+                            <h2>Reach Us by Email (fastest response time!)</h2>
                             <p><strong>Support Email: support@herzp1.com</strong><br>We aim to respond within 24 hours during our working hours of Monday - Friday, 9:00 am to 5:00 pm.</p>
                             <h2>Reach Us by Phone or SMS</h2>
                             <p>US Customer Support: (877) 309-3614. Please note: We are currently experiencing very high call volumes. The best and fastest way to contact us is by email or SMS to (877) 309-3614.<br>Phone Support: 9:00am - 5:00pm Eastern</p>
-                            <p>Outside of our working hours you can leave us a voice mail, and we will call you back on the next business day.</p>
+                            <p>Outside of our working hours you can leave us a voice mail, and we will call you back on the next business day. Please clearly indicate your name and order number if you are calling about an existing order.</p>
                             <h2>Company Details</h2>
                             <p>Herz P1 LLC<br>839 E Market St<br>Ste 106 #165<br>Akron, OH, 44305<br>United States</p>
                         </div>
@@ -551,29 +585,29 @@
                             <p>When you purchase something from our store, as part of the buying and selling process, we collect the personal information you give us such as your name, address and email address.</p>
                             <h2>SECTION 2 - CONSENT</h2>
                             <p>How do you get my consent? When you provide us with personal information to complete a transaction, verify your credit card, place an order, arrange for a delivery or return a purchase, we imply that you consent to our collecting it and using it for that specific reason only.</p>
-                            <p>How do I withdraw my consent? You may withdraw your consent at any time by contacting us at support@herzp1.com.</p>
+                            <p>How do I withdraw my consent? If after you opt-in, you change your mind, you may withdraw your consent for us to contact you, for the continued collection, use or disclosure of your information, at any time, by contacting us at support@herzp1.com.</p>
                             <h2>SECTION 3 - DISCLOSURE</h2>
                             <p>We may disclose your personal information if we are required by law to do so or if you violate our Terms of Service.</p>
                             <h2>SECTION 4 - ECOMMERCE SOFTWARE</h2>
-                            <p>Our store is hosted on 29 Next. Your data is stored through 29 Next’s data storage and databases on a secure server behind a firewall.</p>
+                            <p>Our store is hosted on 29 Next. They provide us with the online e-commerce platform that allows us to sell our products and services to you. Your data is stored through 29 Next’s data storage, databases and the general 29 Next application. They store your data on a secure server behind a firewall.</p>
                             <h2>SECTION 6 - SECURITY</h2>
-                            <p>To protect your personal information, we take reasonable precautions and follow industry best practices. Your credit card information is encrypted using secure socket layer technology (SSL) and stored with a AES-256 encryption.</p>
+                            <p>To protect your personal information, we take reasonable precautions and follow industry best practices to make sure it is not inappropriately lost, misused, accessed, disclosed, altered or destroyed. If you provide us with your credit card information, the information is encrypted using secure socket layer technology (SSL) and stored with a AES-256 encryption.</p>
                             <h2>SECTION 10 - SMS COMMUNICATIONS</h2>
-                            <p>By providing your phone number, you agree to receive SMS regarding your order or transactions. You can unsubscribe at any time by replying STOP.</p>
+                            <p>By providing your mobile phone number at checkout or for any other purchase-related engagement, you agree that we may send you text messages (SMS) regarding your order or transactions. This includes, but is not limited to, shipping notifications, notifications of an abandoned cart, to remind you of items you have left behind in your online shopping cart, and to offer you assistance in completing your purchase. Additionally, with your explicit consent, we may send you SMS messages for marketing and promotional purposes. You can unsubscribe from these promotional messages at any time by replying "STOP" to any message you receive from us.</p>
                         </div>
                     </template>
 
                     <template x-if="modalType === 'terms'">
                         <div>
-                            <p>This website is operated by Herz P1 LLC. Throughout the site, the terms “we”, “us” and “our” refer to Herz P1 LLC.</p>
+                            <p>This website is operated by Herz P1 LLC. Throughout the site, the terms “we”, “us” and “our” refer to Herz P1 LLC. Herz P1 LLC offers this website, including all information, tools and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.</p>
                             <h2>SECTION 1 - ONLINE STORE TERMS</h2>
-                            <p>By agreeing to these Terms of Service, you represent that you are at least the age of majority in your state or province of residence.</p>
+                            <p>By agreeing to these Terms of Service, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or province of residence and you have given us your consent to allow any of your minor dependents to use this site.</p>
                             <h2>SECTION 3 - ACCURACY, COMPLETENESS AND TIMELINESS OF INFORMATION</h2>
-                            <p>The material on this site is provided for general information only and should not be relied upon or used as the sole basis for making decisions without consulting primary sources.</p>
+                            <p>We are not responsible if information made available on this site is not accurate, complete or current. The material on this site is provided for general information only and should not be relied upon or used as the sole basis for making decisions without consulting primary, more accurate, more complete or more timely sources of information.</p>
                             <h2>SECTION 4 - MODIFICATIONS TO THE SERVICE AND PRICES</h2>
-                            <p>Prices for our products are subject to change without notice. We reserve the right at any time to modify or discontinue the Service without notice.</p>
-                            <h2>SECTION 13 - LIMITATION OF LIABILITY</h2>
-                            <p>In no case shall Herz P1 LLC, our directors, officers, or employees be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, or consequential damages arising from your use of the service.</p>
+                            <p>Prices for our products are subject to change without notice. We reserve the right at any time to modify or discontinue the Service (or any part or content thereof) without notice at any time.</p>
+                            <h2>SECTION 13 - DISCLAIMER OF WARRANTIES; LIMITATION OF LIABILITY</h2>
+                            <p>In no case shall Herz P1 LLC, our directors, officers, employees, affiliates, agents, contractors, interns, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind, including, without limitation lost profits, lost revenue, lost savings, loss of data, replacement costs, or any similar damages, whether based in contract, tort (including negligence), strict liability or otherwise, arising from your use of any of the service or any products procured using the service.</p>
                             <h2>SECTION 19 - GOVERNING LAW</h2>
                             <p>These Terms of Service and any separate agreements whereby we provide you Services shall be governed by and construed in accordance with the law.</p>
                         </div>
