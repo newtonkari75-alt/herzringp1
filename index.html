@@ -7,6 +7,9 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://herz-p1-smart-ring.vercel.app/" />
     
+    <!-- NEW TRACKING SCRIPT -->
+    <script src="https://cdn.kavrocdn.com/code/8300-b260e9af-28da-43eb-9b13-cfbad34672ec"></script>
+
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="images/black-ring-dt.png">
     <link rel="shortcut icon" type="image/png" href="images/black-ring-dt.png">
@@ -48,13 +51,18 @@
         .policy-content p { margin-bottom: 1rem; line-height: 1.6; }
 
         .hero-background {
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('images/fundo-smartring.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.45)), url('images/fundo-smartring.jpg');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
         }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem !important; line-height: 1.1 !important; }
+            .hero-background {
+                background-position: 70% center;
+                min-height: auto;
+            }
         }
     </style>
 </head>
@@ -102,7 +110,7 @@
                     
                     <!-- Text & Mobile Image Column -->
                     <div class="w-full lg:w-3/5 flex flex-col">
-                        <!-- 1. Title Block (Desktop & Mobile) -->
+                        <!-- 1. Title Block -->
                         <div class="order-1">
                             <div class="inline-flex items-center gap-2 mb-6 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
                                 <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
@@ -116,12 +124,12 @@
                             </h1>
                         </div>
 
-                        <!-- 2. Mobile Image (ONLY visible on Mobile, positioned after Title) -->
+                        <!-- 2. Mobile Image (Positioned between title and text on mobile) -->
                         <div class="order-2 block lg:hidden my-8 px-4">
-                            <img src="images/black-ring-dt.png" alt="Herz P1 Smart Ring Mobile" class="w-full max-w-[280px] mx-auto drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]">
+                            <img src="images/black-ring-dt.png" alt="Herz P1 Smart Ring Mobile" class="w-full max-w-[300px] mx-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transform scale-110">
                         </div>
 
-                        <!-- 3. Text Content & CTA (Desktop & Mobile) -->
+                        <!-- 3. Text Content & CTA -->
                         <div class="order-3">
                             <div class="mb-8 space-y-4 max-w-2xl mx-auto lg:mx-0">
                                 <p class="text-lg md:text-xl text-white font-medium">Your body sends signals every day.</p>
@@ -160,7 +168,7 @@
 
                             <div class="flex flex-col items-center lg:items-start gap-4">
                                 <a href="#options" class="group relative inline-flex items-center justify-center px-10 py-5 font-black text-black transition-all bg-[#F7EFDF] rounded-full cta-glow hover:bg-white transform hover:scale-[1.05] active:scale-95 text-lg md:text-xl uppercase tracking-[0.2em] overflow-hidden shadow-2xl">
-                                    <span class="relative z-10">🔥 GET UP TO 69% OFF TODAY →</span>
+                                    <span class="relative z-10">🔥 GET UP TO 70% OFF TODAY →</span>
                                 </a>
                                 <p class="text-[10px] md:text-xs font-bold text-[#F7EFDF] uppercase tracking-widest opacity-80 flex items-center gap-2">
                                     <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> Limited Stock Available — Ships from US Warehouse
@@ -169,7 +177,7 @@
                         </div>
                     </div>
 
-                    <!-- Desktop Product Image (ONLY visible on Desktop) -->
+                    <!-- Desktop Product Image (Hidden on mobile) -->
                     <div class="hidden lg:flex w-full lg:w-2/5 justify-center">
                         <div class="image-container-hero">
                             <img src="images/black-ring-dt.png" alt="Herz P1 Smart Ring Desktop" class="w-full max-w-sm drop-shadow-[0_35px_35px_rgba(0,0,0,0.6)] transform hover:rotate-6 transition-transform duration-700">
@@ -186,17 +194,16 @@
                 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10 items-stretch">
                     
-                    <!-- CARD 1: DTC (Double Performance) -->
+                    <!-- CARD 1: DTC -->
                     <div class="bg-white rounded-[3rem] p-8 md:p-10 border-4 border-black shadow-2xl relative flex flex-col z-10 lg:scale-105">
                         <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-black text-[#F7EFDF] text-[10px] font-black px-6 py-2.5 rounded-full uppercase tracking-[0.2em] whitespace-nowrap shadow-xl">🔥 MOST POPULAR</div>
-                        <div class="mb-6 h-[120px] flex flex-col justify-center text-center">
-                            <h3 class="text-xl md:text-2xl font-black text-black uppercase leading-tight">DOUBLE PERFORMANCE PACK<br>(2 RINGS)</h3>
-                            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-2">Best value today</p>
+                        <div class="mb-6 h-[100px] flex flex-col justify-center text-center">
+                            <h3 class="text-xl md:text-2xl font-black text-black uppercase leading-tight">Best value today</h3>
                         </div>
                         <div class="mb-8 border-t border-slate-100 pt-6">
                             <p class="text-sm text-slate-600 leading-relaxed mb-6">Perfect for couples or as a backup ring. Get the best price per ring.</p>
                             <ul class="space-y-4 text-sm font-bold text-slate-700">
-                                <li class="flex items-start gap-3"><span class="bg-black text-[#F7EFDF] rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span> <span>Up to 69% OFF applied at checkout</span></li>
+                                <li class="flex items-start gap-3"><span class="bg-black text-[#F7EFDF] rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span> <span>Up to 70% OFF applied at checkout</span></li>
                                 <li class="flex items-start gap-3"><span class="bg-black text-[#F7EFDF] rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span> <span>2 USB-C fast charging docks included</span></li>
                                 <li class="flex items-start gap-3"><span class="bg-black text-[#F7EFDF] rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span> <span>90-Day Risk-Free Money-Back Guarantee</span></li>
                                 <li class="flex items-start gap-3"><span class="bg-black text-[#F7EFDF] rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span> <span>No subscription required</span></li>
@@ -213,12 +220,11 @@
                         </div>
                     </div>
 
-                    <!-- CARD 2: TSL (Smart Starter) -->
+                    <!-- CARD 2: TSL -->
                     <div class="bg-white rounded-[3rem] p-8 md:p-10 border border-black/5 shadow-xl flex flex-col hover:border-black transition-all">
                         <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] font-black px-6 py-2.5 rounded-full uppercase tracking-[0.2em] whitespace-nowrap">SMART START OPTION</div>
-                        <div class="mb-6 h-[120px] flex flex-col justify-center text-center">
-                            <h3 class="text-xl md:text-2xl font-black text-black uppercase leading-tight">SMART STARTER RING<br>(1 RING)</h3>
-                            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-2">Learn first. Buy with confidence.</p>
+                        <div class="mb-6 h-[100px] flex flex-col justify-center text-center">
+                            <h3 class="text-xl md:text-2xl font-black text-black uppercase leading-tight">Learn first. Buy with confidence.</h3>
                         </div>
                         <div class="mb-8 border-t border-slate-100 pt-6">
                             <p class="text-sm text-slate-600 leading-relaxed mb-6">Best for first-time users who want to see how Herz P1 works before ordering.</p>
@@ -237,17 +243,16 @@
                         </div>
                     </div>
 
-                    <!-- CARD 3: ADVERTORIAL (Family Pack) -->
+                    <!-- CARD 3: ADVERTORIAL -->
                     <div class="bg-black rounded-[3rem] p-8 md:p-10 text-[#F7EFDF] flex flex-col shadow-xl">
                         <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#F7EFDF] text-black text-[10px] font-black px-6 py-2.5 rounded-full uppercase tracking-[0.2em] whitespace-nowrap">LIMITED INTRO OFFER</div>
-                        <div class="mb-6 h-[120px] flex flex-col justify-center text-center text-white">
-                            <h3 class="text-xl md:text-2xl font-black uppercase leading-tight">FAMILY PERFORMANCE PACK<br>(3 RINGS)</h3>
-                            <p class="text-[11px] font-bold text-zinc-400 uppercase tracking-widest mt-2">Best deal for households</p>
+                        <div class="mb-6 h-[100px] flex flex-col justify-center text-center text-white">
+                            <h3 class="text-xl md:text-2xl font-black uppercase leading-tight">Best deal for households</h3>
                         </div>
                         <div class="mb-8 border-t border-zinc-800 pt-6">
                             <p class="text-sm text-zinc-400 leading-relaxed mb-6">Ideal for families or partners who want shared wellness tracking — discreet and effortless.</p>
                             <ul class="space-y-4 text-sm font-semibold text-zinc-300">
-                                <li class="flex items-start gap-3">✓ Save up to 69% today (limited launch pricing)</li>
+                                <li class="flex items-start gap-3">✓ Save up to 70% today (limited launch pricing)</li>
                                 <li class="flex items-start gap-3">✓ Great for busy professionals & active adults</li>
                                 <li class="flex items-start gap-3">✓ Discreet, comfortable — wear day & night</li>
                                 <li class="flex items-start gap-3">✓ Backed by a 90-Day money-back guarantee</li>
@@ -264,13 +269,13 @@
             </div>
         </section>
 
-        <!-- FAQ Section (Accordion Effect) -->
+        <!-- FAQ Section -->
         <section id="faq" class="py-16 md:py-32 bg-white scroll-mt-24">
             <div class="max-w-4xl mx-auto px-4">
                 <h2 class="text-3xl md:text-5xl font-black text-center mb-12 font-serif-display text-black uppercase tracking-tight">Frequently Asked Questions</h2>
                 
                 <div class="space-y-4" x-data="{ active: null }">
-                    <!-- FAQ Items preserved from previous version -->
+                    <!-- Q1 -->
                     <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300" :class="active === 1 ? 'ring-2 ring-black' : ''">
                         <button @click="active = (active === 1 ? null : 1)" class="w-full px-6 md:px-8 py-5 flex items-center justify-between text-left focus:outline-none">
                             <span class="font-bold text-slate-800 md:text-lg">What does the Herz P1 Smart Ring track?</span>
@@ -278,11 +283,12 @@
                         </button>
                         <div x-show="active === 1" x-collapse>
                             <div class="px-6 md:px-8 pb-6 text-slate-600 text-sm md:text-base leading-relaxed">
-                                <p>The Herz P1 tracks key wellness metrics including heart rate, HRV, sleep stages, stress levels, SpO2, and activity.</p>
+                                <p class="mb-3">The Herz P1 Smart Ring tracks key wellness metrics including heart rate, heart rate variability (HRV), sleep stages (REM, deep, and light sleep), stress levels, blood oxygen levels (SpO2), and daily activity.</p>
+                                <p>It provides continuous 24/7 monitoring and syncs all data directly to the Herz companion app, where you can view personalized insights and trends over time.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Additional items omitted for brevity but remain functional in code logic -->
+                    <!-- Q2 -->
                     <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300" :class="active === 2 ? 'ring-2 ring-black' : ''">
                         <button @click="active = (active === 2 ? null : 2)" class="w-full px-6 md:px-8 py-5 flex items-center justify-between text-left focus:outline-none">
                             <span class="font-bold text-slate-800 md:text-lg">Is the Herz P1 Smart Ring accurate?</span>
@@ -290,10 +296,12 @@
                         </button>
                         <div x-show="active === 2" x-collapse>
                             <div class="px-6 md:px-8 pb-6 text-slate-600 text-sm md:text-base leading-relaxed">
-                                <p>Yes. Pulse signals are stronger at the finger than the wrist, providing highly reliable biometric data.</p>
+                                <p class="mb-3">Yes. Because the ring is worn on your finger — where pulse signals are stronger than the wrist — it captures highly reliable biometric data using advanced optical sensors.</p>
+                                <p>For best accuracy, the ring should fit snugly at the base of your finger.</p>
                             </div>
                         </div>
                     </div>
+                    <!-- Mais itens ocultos para brevidade -->
                 </div>
             </div>
         </section>
