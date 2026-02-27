@@ -34,108 +34,13 @@
     <meta name="twitter:description" content="24/7 wellness insights—sleep, stress & recovery, heart rate and activity. No subscription. Up to 6-day battery. IP68 water resistant.">
     <meta name="twitter:image" content="https://www.herzringp1.shop/og/og-image.jpg">
 
-    <!-- Hreflang / Target Markets (EN) -->
-    <link rel="alternate" href="https://www.herzringp1.shop/" hreflang="en-us">
-    <link rel="alternate" href="https://www.herzringp1.shop/" hreflang="en-gb">
-    <link rel="alternate" href="https://www.herzringp1.shop/" hreflang="en-ca">
-    <link rel="alternate" href="https://www.herzringp1.shop/" hreflang="en-au">
-    <link rel="alternate" href="https://www.herzringp1.shop/" hreflang="en-nz">
-    <link rel="alternate" href="https://www.herzringp1.shop/" hreflang="x-default">
-
-    <!-- Performance -->
-    <link rel="preconnect" href="https://www.herzringp1.shop" crossorigin>
-    <link rel="dns-prefetch" href="//www.herzringp1.shop">
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <!-- Tracking -->
     <script src="https://cdn.kavrocdn.com/code/8300-b260e9af-28da-43eb-9b13-cfbad34672ec"></script>
-
-    <!-- Theme niceties -->
-    <meta name="theme-color" content="#0b0b0b">
-    <meta name="color-scheme" content="light">
-    <meta name="format-detection" content="telephone=no">
 
     <!-- Favicon (Product Image) -->
     <link rel="icon" type="image/png" href="images/black-ring-dt.png">
     <link rel="shortcut icon" type="image/png" href="images/black-ring-dt.png">
     <link rel="apple-touch-icon" href="images/black-ring-dt.png">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Herz P1 Smart Ring",
-      "url": "https://www.herzringp1.shop/",
-      "inLanguage": "en",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.herzringp1.shop/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Herz P1 Smart Ring",
-      "url": "https://www.herzringp1.shop/",
-      "logo": "https://www.herzringp1.shop/og/logo.png"
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Herz P1 Smart Ring",
-      "description": "Herz P1 Smart Ring provides 24/7 wellness insights including sleep stages, stress & recovery, heart rate and activity tracking in a discreet ring design. No subscription required. Up to 6-day battery life. IP68 water resistant.",
-      "image": ["https://www.herzringp1.shop/og/og-image.jpg"],
-      "brand": { "@type": "Brand", "name": "Herz" },
-      "category": "Wearable Technology",
-      "offers": {
-        "@type": "Offer",
-        "url": "https://www.herzringp1.shop/",
-        "priceCurrency": "USD",
-        "price": "59.99",
-        "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition",
-        "priceValidUntil": "2026-12-31",
-        "seller": { "@type": "Organization", "name": "Herz P1 Smart Ring" }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.7",
-        "reviewCount": "5127"
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What does the Herz P1 Smart Ring track?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Herz P1 Smart Ring tracks key wellness metrics such as sleep stages, stress and recovery insights, heart rate and HRV trends, blood oxygen (SpO2), activity, and daily movement."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is there a monthly subscription fee?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Herz P1 Smart Ring does not require a monthly subscription for core tracking features."
-          }
-        }
-        /* ... Additional FAQ items included in metadata for search engines ... */
-      ]
-    }
-    </script>
 
     <!-- Styles & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -154,13 +59,34 @@
         .feature-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.4rem 0; }
         .cta-glow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4); }
         [x-cloak] { display: none !important; }
+        
+        /* Smooth Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+
         .hero-background {
             background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.45)), url('images/fundo-smartring.jpg');
-            background-size: cover; background-position: center; background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
+
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem !important; line-height: 1.1 !important; }
-            .hero-background { background-position: 70% center; min-height: auto; }
+            .hero-background {
+                background-position: center top;
+                background-attachment: scroll;
+                min-height: auto;
+                padding-top: 100px;
+                padding-bottom: 40px;
+            }
         }
     </style>
 </head>
@@ -170,19 +96,38 @@
     closePolicy() { this.showModal = false; document.body.style.overflow = 'auto'; }
 }">
 
-    <!-- Top Banner -->
-    <div class="bg-black text-[#F7EFDF] text-[10px] md:text-xs py-2.5 text-center font-bold tracking-widest uppercase flex justify-center items-center gap-2 md:gap-3 px-4 sticky top-0 z-[70]">
-        <span class="flex items-center gap-1.5">
-            <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-            </span>
-            FLASH SALE: GET <span class="text-white ml-1">70% OFF TODAY</span> + 90-DAY MONEY BACK GUARANTEE!
-        </span>
+    <!-- Rolling Top Banner (Marquee) -->
+    <div class="bg-black text-[#F7EFDF] py-3 sticky top-0 z-[70] border-b border-white/5 overflow-hidden">
+        <div class="animate-marquee whitespace-nowrap">
+            <!-- First set of text -->
+            <div class="flex items-center">
+                <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase px-8">
+                    FLASH SALE: GET <span class="text-white">70% OFF TODAY</span> + 90-DAY MONEY BACK GUARANTEE!
+                </span>
+                <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase px-8">
+                    FLASH SALE: GET <span class="text-white">70% OFF TODAY</span> + 90-DAY MONEY BACK GUARANTEE!
+                </span>
+                <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase px-8">
+                    FLASH SALE: GET <span class="text-white">70% OFF TODAY</span> + 90-DAY MONEY BACK GUARANTEE!
+                </span>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="flex items-center">
+                <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase px-8">
+                    FLASH SALE: GET <span class="text-white">70% OFF TODAY</span> + 90-DAY MONEY BACK GUARANTEE!
+                </span>
+                <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase px-8">
+                    FLASH SALE: GET <span class="text-white">70% OFF TODAY</span> + 90-DAY MONEY BACK GUARANTEE!
+                </span>
+                <span class="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase px-8">
+                    FLASH SALE: GET <span class="text-white">70% OFF TODAY</span> + 90-DAY MONEY BACK GUARANTEE!
+                </span>
+            </div>
+        </div>
     </div>
 
     <!-- Header -->
-    <header class="absolute top-[35px] md:top-[38px] left-0 right-0 z-[60] py-4 md:py-6">
+    <header class="absolute top-[45px] left-0 right-0 z-[60] py-4 md:py-6">
         <div class="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
             <div class="flex items-center">
                 <img src="images/logo-white.svg" alt="Herz P1 Logo" class="h-8 md:h-10" onerror="this.outerHTML='<span class=\'text-white font-black text-2xl tracking-tighter uppercase\'>HERZ P1</span>'">
@@ -199,10 +144,13 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-background min-h-[100vh] flex items-center pt-24 pb-12 md:pt-32 md:pb-24">
+        <section class="hero-background min-h-[100vh] flex items-center">
             <div class="max-w-7xl mx-auto px-4 md:px-8 w-full">
                 <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center text-center lg:text-left">
+                    
+                    <!-- Content Wrapper -->
                     <div class="w-full lg:w-3/5 flex flex-col">
+                        <!-- 1. Title Block -->
                         <div class="order-1">
                             <div class="inline-flex items-center gap-2 mb-6 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
                                 <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
@@ -212,23 +160,32 @@
                                 Data Is Power.<br><span class="italic font-light text-[#F7EFDF]">Your Health Shouldn’t Be Guesswork.</span>
                             </h1>
                         </div>
-                        <div class="order-2 block lg:hidden my-8 px-4">
-                            <img src="images/black-ring-dt.png" alt="Herz P1 Smart Ring Mobile" class="w-full max-w-[300px] mx-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transform scale-110">
+
+                        <!-- 2. Mobile Product Image -->
+                        <div class="order-2 block lg:hidden my-6 px-4">
+                            <img src="images/black-ring-dt.png" alt="Herz P1 Smart Ring Mobile" class="w-full max-w-[260px] mx-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transform scale-110">
                         </div>
+
+                        <!-- 3. Text Block & CTA -->
                         <div class="order-3">
                             <div class="mb-8 space-y-4 max-w-2xl mx-auto lg:mx-0">
                                 <p class="text-lg md:text-xl text-white font-medium">Your body sends signals every day.</p>
-                                <p class="text-base md:text-lg text-white/80 leading-relaxed font-light">Sleep quality. Stress load. Heart rhythm. Recovery levels. <br class="hidden md:block">Herz P1 Smart Ring turns those signals into clear, actionable insights — 24/7.</p>
+                                <p class="text-base md:text-lg text-white/80 leading-relaxed font-light">
+                                    Sleep quality. Stress load. Heart rhythm. Recovery levels. <br class="hidden md:block">
+                                    Herz P1 Smart Ring turns those signals into clear, actionable insights — 24/7.
+                                </p>
                                 <div class="flex flex-wrap justify-center lg:justify-start gap-4 text-[10px] md:text-xs font-bold text-white uppercase tracking-[0.2em] opacity-80">
                                     <span>No bulky smartwatch</span><span class="hidden md:inline">•</span><span>No subscription fees</span><span class="hidden md:inline">•</span><span>No daily charging</span>
                                 </div>
                             </div>
+                            
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-10 text-left max-w-lg mx-auto lg:mx-0">
                                 <div class="flex items-center gap-3 text-white font-bold uppercase tracking-tight text-[11px]"><span class="bg-[#F7EFDF] text-black rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span>Advanced Sleep Tracking</div>
                                 <div class="flex items-center gap-3 text-white font-bold uppercase tracking-tight text-[11px]"><span class="bg-[#F7EFDF] text-black rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span>Real-Time Heart Monitoring</div>
                                 <div class="flex items-center gap-3 text-white font-bold uppercase tracking-tight text-[11px]"><span class="bg-[#F7EFDF] text-black rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span>Stress & Recovery Insights</div>
                                 <div class="flex items-center gap-3 text-white font-bold uppercase tracking-tight text-[11px]"><span class="bg-[#F7EFDF] text-black rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span>Up to 6 Days Battery</div>
                             </div>
+
                             <div class="flex flex-col items-center lg:items-start gap-4">
                                 <a href="#options" class="group relative inline-flex items-center justify-center px-10 py-5 font-black text-black transition-all bg-[#F7EFDF] rounded-full cta-glow hover:bg-white transform hover:scale-[1.05] active:scale-95 text-lg md:text-xl uppercase tracking-[0.2em] overflow-hidden shadow-2xl">
                                     <span class="relative z-10">🔥 GET UP TO 70% OFF TODAY →</span>
@@ -239,6 +196,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Desktop Product Image -->
                     <div class="hidden lg:flex w-full lg:w-2/5 justify-center">
                         <img src="images/black-ring-dt.png" alt="Herz P1 Smart Ring Desktop" class="w-full max-w-sm drop-shadow-[0_35px_35px_rgba(0,0,0,0.6)] transform hover:rotate-6 transition-transform duration-700">
                     </div>
@@ -331,14 +290,6 @@
                         </button>
                         <div x-show="active === 1" x-collapse><div class="px-6 md:px-8 pb-6 text-slate-600 text-sm md:text-base leading-relaxed">The Herz P1 Smart Ring tracks heart rate, HRV, sleep stages (REM, deep, light), stress levels, SpO2, and activity 24/7.</div></div>
                     </div>
-                    <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300" :class="active === 2 ? 'ring-2 ring-black' : ''">
-                        <button @click="active = (active === 2 ? null : 2)" class="w-full px-6 md:px-8 py-5 flex items-center justify-between text-left focus:outline-none">
-                            <span class="font-bold text-slate-800 md:text-lg">Is there a monthly subscription fee?</span>
-                            <svg :class="active === 2 ? 'rotate-180' : ''" class="w-5 h-5 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div x-show="active === 2" x-collapse><div class="px-6 md:px-8 pb-6 text-slate-600 text-sm md:text-base leading-relaxed">No. Herz P1 Smart Ring does not require a monthly subscription for its core tracking features.</div></div>
-                    </div>
-                    <!-- FAQ content continues same logic -->
                 </div>
             </div>
         </section>
