@@ -16,7 +16,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Herz P1 Smart Ring - Präzise Gesundheitsüberwachung" />
     <meta property="og:description" content="Minimalistisches Design trifft auf modernste Sensortechnik. Überwachen Sie Ihren Schlaf und Herzfrequenz rund um die Uhr." />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?auto=format&fit=crop&q=80&w=800" />
+    <meta property="og:image" content="images/black-ring-dt.png" />
 
     <!-- SCRIPTS & FONTS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,33 +31,33 @@
         }
         body { font-family: 'Inter', sans-serif; font-size: 16px; -webkit-font-smoothing: antialiased; background-color: var(--page-bg); }
         .font-serif-display { font-family: 'Playfair Display', serif; }
-        .glass { background: rgba(247, 239, 223, 0.9); backdrop-filter: blur(12px); }
+        .glass { background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(12px); }
         
         /* Layout Structure Consistency */
-        .image-container { border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); background: #fff; width: 100%; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0,0,0,0.05); }
+        .image-container-hero { border-radius: 1.5rem; overflow: hidden; width: 100%; display: flex; align-items: center; justify-content: center; }
         .feature-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.4rem 0; }
-        .cta-glow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2); }
+        .cta-glow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4); }
         [x-cloak] { display: none !important; }
         
         .policy-content h2 { font-weight: 800; font-size: 1.25rem; color: #000; margin-top: 1.5rem; margin-bottom: 0.75rem; }
         .policy-content p { margin-bottom: 1rem; line-height: 1.6; }
 
+        .hero-background {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('images/fundo-smartring.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
         @media (max-width: 768px) {
-            h1 { font-size: 1.85rem !important; line-height: 1.2 !important; }
+            h1 { font-size: 2.25rem !important; line-height: 1.1 !important; }
         }
     </style>
 </head>
 <body class="text-slate-900 overflow-x-hidden" x-data="{ 
     showModal: false, modalTitle: '', modalType: '',
-    currentSlide: 0,
-    slides: [
-        'https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?auto=format&fit=crop&q=80&w=800', 
-        'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800', 
-        'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?auto=format&fit=crop&q=80&w=800'
-    ],
     openPolicy(type, title) { this.modalType = type; this.modalTitle = title; this.showModal = true; document.body.style.overflow = 'hidden'; },
     closePolicy() { this.showModal = false; document.body.style.overflow = 'auto'; }
-}" x-init="setInterval(() => { currentSlide = (currentSlide + 1) % slides.length }, 3000)">
+}">
 
     <!-- Top Banner -->
     <div class="bg-black text-[#F7EFDF] text-[10px] md:text-xs py-2.5 text-center font-bold tracking-widest uppercase flex justify-center items-center gap-2 md:gap-3 px-4 sticky top-0 z-[70]">
@@ -71,227 +71,237 @@
     </div>
 
     <!-- Header -->
-    <header class="bg-[#F7EFDF]/95 backdrop-blur-md sticky top-[35px] md:top-[38px] z-[60] py-3 md:py-4 border-b border-black/5 shadow-sm">
+    <header class="absolute top-[35px] md:top-[38px] left-0 right-0 z-[60] py-4 md:py-6">
         <div class="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
             <div class="flex items-center">
-                <span class="text-xl md:text-2xl font-black text-black tracking-tighter uppercase">HERZ <span class="font-light italic">P1</span></span>
+                <img src="images/logo-white.svg" alt="Herz P1 Logo" class="h-8 md:h-10" onerror="this.outerHTML='<span class=\'text-white font-black text-2xl tracking-tighter uppercase\'>HERZ P1</span>'">
             </div>
             
-            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
-                <button @click="document.getElementById('options').scrollIntoView({behavior:'smooth'})" class="hover:text-black transition-colors">Modelle</button>
-                <button @click="document.getElementById('faq').scrollIntoView({behavior:'smooth'})" class="hover:text-black transition-colors">FAQ</button>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-white/80">
+                <button @click="document.getElementById('options').scrollIntoView({behavior:'smooth'})" class="hover:text-white transition-colors">Modelle</button>
+                <button @click="document.getElementById('faq').scrollIntoView({behavior:'smooth'})" class="hover:text-white transition-colors">FAQ</button>
             </nav>
 
-            <a href="https://vcozy.doctorzakaria.com/l" class="bg-black text-[#F7EFDF] px-5 md:px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-zinc-800 transition-all shadow-md active:scale-95">
+            <a href="#options" class="bg-[#F7EFDF] text-black px-5 md:px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-white transition-all shadow-xl active:scale-95">
                 Preise ansehen
             </a>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 md:px-8 pt-6 md:pt-12 pb-32">
+    <main>
         
-        <!-- Hero Section (Original Structure) -->
-        <section class="mb-12 md:mb-24">
-            <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center text-center lg:text-left">
-                
-                <!-- Text Column -->
-                <div class="w-full lg:order-1 lg:w-1/2">
-                    <div class="flex flex-col sm:flex-row items-center lg:items-start gap-2 mb-6">
-                        <div class="flex text-black">
-                            <template x-for="i in 5">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            </template>
-                        </div>
-                        <span class="text-[11px] md:text-xs font-bold text-slate-500 uppercase tracking-widest">
-                            Testsieger 2026 | Über 2.915 zufriedene Nutzer
-                        </span>
-                    </div>
-
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-6 font-serif-display text-black tracking-tight">
-                        Wissen ist <br><span class="italic font-light text-zinc-400">Gesundheit.</span>
-                    </h1>
-
-                    <!-- MOBILE CAROUSEL -->
-                    <div class="block lg:hidden mb-8 relative">
-                        <div class="image-container relative bg-white">
-                            <template x-for="(slide, index) in slides" :key="index">
-                                <img :src="slide" 
-                                     x-show="currentSlide === index" 
-                                     x-transition:enter="transition ease-out duration-500"
-                                     x-transition:enter-start="opacity-0 transform scale-95"
-                                     x-transition:enter-end="opacity-100 transform scale-100"
-                                     class="absolute inset-0 w-full h-full object-cover p-2" 
-                                     alt="Herz P1 Smart Ring">
-                            </template>
-                        </div>
-                    </div>
-
-                    <p class="text-base md:text-lg text-slate-600 mb-6 leading-relaxed font-medium">
-                        Ihre Gesundheit sollte nicht nur eine Schätzung sein. Der Herz P1 Smart Ring liefert präzise Daten über Schlaf, Herzfrequenz und Stress direkt an Ihr Smartphone.
-                    </p>
+        <!-- Hero Section with Background Image -->
+        <section class="hero-background min-h-[90vh] flex items-center pt-24 pb-12 md:pt-32 md:pb-24">
+            <div class="max-w-7xl mx-auto px-4 md:px-8 w-full">
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center text-center lg:text-left">
                     
-                    <p class="text-sm md:text-base text-slate-700 mb-8 leading-relaxed border-l-4 border-black pl-4 text-left font-semibold">
-                        Minimalistisches Design aus Titan. Ein Labor an Ihrem Finger, das Sie nie spüren, aber immer unterstützt.
-                    </p>
+                    <!-- Text Column -->
+                    <div class="w-full lg:w-1/2">
+                        <div class="inline-flex items-center gap-2 mb-6 bg-white/10 backdrop-blur-md px-4 py-1 rounded-full">
+                            <div class="flex text-white">
+                                <template x-for="i in 5">
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                </template>
+                            </div>
+                            <span class="text-[11px] md:text-xs font-bold text-white uppercase tracking-widest">
+                                Testsieger 2026 | Über 2.915 Nutzer
+                            </span>
+                        </div>
 
-                    <!-- Features List (Original Structure) -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-0.5 mb-10 text-left max-w-sm mx-auto lg:mx-0">
-                        <div class="feature-item"><span class="text-black font-bold">✓</span><span class="text-xs font-bold text-slate-700 uppercase tracking-tight">PRÄZISES SCHLAF-TRACKING</span></div>
-                        <div class="feature-item"><span class="text-black font-bold">✓</span><span class="text-xs font-bold text-slate-700 uppercase tracking-tight">EKG & HERZFREQUENZ 24/7</span></div>
-                        <div class="feature-item"><span class="text-black font-bold">✓</span><span class="text-xs font-bold text-slate-700 uppercase tracking-tight">TITAN-GEHÄUSE (ULTRA-LEICHT)</span></div>
-                        <div class="feature-item"><span class="text-black font-bold">✓</span><span class="text-xs font-bold text-slate-700 uppercase tracking-tight">10 TAGE AKKULAUFZEIT</span></div>
+                        <h1 class="text-5xl md:text-7xl font-black leading-[1] mb-6 font-serif-display text-white tracking-tight">
+                            Wissen ist <br><span class="italic font-light text-[#F7EFDF]">Gesundheit.</span>
+                        </h1>
+
+                        <p class="text-lg md:text-xl text-white/90 mb-8 leading-relaxed font-medium max-w-xl mx-auto lg:mx-0">
+                            Ihre Gesundheit sollte nicht nur eine Schätzung sein. Der Herz P1 Smart Ring liefert präzise Daten über Schlaf, Herzfrequenz und Stress direkt an Ihr Smartphone.
+                        </p>
+                        
+                        <!-- Features List -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-10 text-left max-w-sm mx-auto lg:mx-0">
+                            <div class="flex items-center gap-3 text-white font-bold uppercase tracking-tight text-xs">
+                                <span class="bg-[#F7EFDF] text-black rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span>
+                                Präzises Schlaf-Tracking
+                            </div>
+                            <div class="flex items-center gap-3 text-white font-bold uppercase tracking-tight text-xs">
+                                <span class="bg-[#F7EFDF] text-black rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span>
+                                EKG & Herzfrequenz
+                            </div>
+                            <div class="flex items-center gap-3 text-white font-bold uppercase tracking-tight text-xs">
+                                <span class="bg-[#F7EFDF] text-black rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span>
+                                Titan-Gehäuse
+                            </div>
+                            <div class="flex items-center gap-3 text-white font-bold uppercase tracking-tight text-xs">
+                                <span class="bg-[#F7EFDF] text-black rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span>
+                                10 Tage Akku
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-stretch sm:items-start gap-4">
+                            <a href="#options" class="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-black transition-all bg-[#F7EFDF] rounded-full cta-glow hover:bg-white transform hover:scale-[1.02] active:scale-95 text-lg md:text-xl uppercase tracking-widest overflow-hidden shadow-2xl">
+                                <span class="relative z-10">JETZT 70% RABATT SICHERN →</span>
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="flex flex-col items-stretch sm:items-start gap-4">
-                        <a href="https://vcozy.doctorzakaria.com/l" class="group relative inline-flex items-center justify-center px-6 md:px-10 py-5 font-bold text-[#F7EFDF] transition-all bg-black rounded-xl md:rounded-2xl cta-glow hover:bg-zinc-800 transform hover:scale-[1.02] active:scale-95 text-lg md:text-xl uppercase tracking-widest overflow-hidden shadow-lg">
-                            <span class="relative z-10">JETZT MIT 70% RABATT BESTELLEN →</span>
+                    <!-- Product Image Column -->
+                    <div class="w-full lg:w-1/2 flex justify-center">
+                        <div class="image-container-hero">
+                            <img src="images/black-ring-dt.png" alt="Herz P1 Smart Ring Black" class="w-full max-w-lg drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)] transform hover:scale-105 transition-transform duration-700">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Purchase Options Section -->
+        <section id="options" class="py-16 md:py-32 bg-[#F7EFDF] scroll-mt-24">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <h2 class="text-4xl md:text-6xl font-black text-center mb-16 font-serif-display text-black tracking-tight uppercase">Wählen Sie Ihr Modell</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10 items-stretch">
+                    
+                    <!-- OPTION 1: DUO -->
+                    <div class="bg-white rounded-[3rem] p-10 border-4 border-black shadow-2xl relative flex flex-col z-10 lg:scale-105">
+                        <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-black text-[#F7EFDF] text-[10px] font-black px-8 py-2.5 rounded-full uppercase tracking-[0.2em] whitespace-nowrap shadow-xl">EMPFOHLENE OPTION</div>
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-black text-black uppercase leading-tight mb-2">DUO PACK (2 RINGE)</h3>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-tighter">FÜR PAARE & FREUNDE</p>
+                        </div>
+                        <div class="mb-8">
+                            <span class="text-5xl font-black text-black">€79.99</span>
+                            <span class="text-slate-400 line-through text-lg ml-2">€266,00</span>
+                        </div>
+                        <ul class="space-y-4 mb-10 text-sm font-bold text-slate-700 flex-grow">
+                            <li class="flex items-start gap-3"><span class="bg-black text-[#F7EFDF] rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span> <span>Kostenloser Expressversand</span></li>
+                            <li class="flex items-start gap-3"><span class="bg-black text-[#F7EFDF] rounded-full p-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg></span> <span>2x USB-C Ladestation</span></li>
+                            <li class="flex items-start gap-3 text-red-600 uppercase tracking-tighter italic"><span class="text-lg leading-none">⚠</span> <span>Bestand: NIEDRIG</span></li>
+                        </ul>
+                        <a href="https://vcozy.doctorzakaria.com/l" class="flex items-center justify-center text-center w-full bg-black hover:bg-zinc-800 text-[#F7EFDF] font-black py-6 px-4 rounded-2xl shadow-lg transition-all uppercase tracking-widest text-sm active:scale-95">
+                            JETZT ANGEBOT SICHERN
+                        </a>
+                    </div>
+
+                    <!-- OPTION 2: SINGLE -->
+                    <div class="bg-white rounded-[3rem] p-10 border border-black/5 shadow-xl flex flex-col hover:border-black transition-all">
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold text-slate-800 uppercase leading-tight mb-2">EINZELSTÜCK</h3>
+                            <p class="text-xs font-bold text-black uppercase tracking-tighter">PERFEKTER EINSTIEG</p>
+                        </div>
+                        <div class="mb-8">
+                            <span class="text-4xl font-black">€49.99</span>
+                            <span class="text-slate-400 line-through text-sm ml-2">€166,00</span>
+                        </div>
+                        <ul class="space-y-4 mb-10 text-sm text-slate-600 font-semibold flex-grow">
+                            <li class="flex items-center gap-3">✓ 1x Herz P1 Smart Ring</li>
+                            <li class="flex items-center gap-3">✓ 1x Ladestation</li>
+                            <li class="flex items-center gap-3 text-slate-400 italic">✗ Versandkosten zzgl.</li>
+                        </ul>
+                        <a href="https://vcozy.doctorzakaria.com/l" class="flex items-center justify-center text-center w-full border-2 border-black text-black font-black py-5 px-4 rounded-2xl transition-all uppercase tracking-widest text-sm active:scale-95">
+                            JETZT BESTELLEN
+                        </a>
+                    </div>
+
+                    <!-- OPTION 3: FAMILY -->
+                    <div class="bg-black rounded-[3rem] p-10 text-[#F7EFDF] flex flex-col shadow-xl">
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold uppercase leading-tight mb-2 text-white">FAMILY PACK</h3>
+                            <p class="text-[9px] font-bold text-zinc-400 uppercase tracking-tighter">MAXIMALE ERSPARNIS</p>
+                        </div>
+                        <div class="mb-8">
+                            <span class="text-4xl font-black text-white">€99.99</span>
+                            <span class="text-zinc-600 line-through text-sm ml-2">€333,00</span>
+                        </div>
+                        <ul class="space-y-4 mb-10 text-sm text-zinc-400 font-semibold flex-grow">
+                            <li class="flex items-center gap-3">✓ 3x Herz P1 Smart Ring</li>
+                            <li class="flex items-center gap-3">✓ 3x Ladestation</li>
+                            <li class="flex items-center gap-3 text-zinc-300">✓ Kostenloser Versand</li>
+                        </ul>
+                        <a href="https://vcozy.doctorzakaria.com/l" class="flex items-center justify-center text-center w-full bg-[#F7EFDF] text-black hover:bg-white font-black py-5 px-4 rounded-2xl transition-all uppercase tracking-widest text-sm active:scale-95">
+                            JETZT BESTELLEN
                         </a>
                     </div>
                 </div>
-
-                <!-- DESKTOP CAROUSEL (Original Structure) -->
-                <div class="hidden lg:block w-full lg:order-2 lg:w-1/2 relative">
-                    <div class="image-container relative shadow-2xl scale-105 aspect-square bg-white border-[1px] border-black/5">
-                        <template x-for="(slide, index) in slides" :key="index">
-                            <img :src="slide" 
-                                 x-show="currentSlide === index" 
-                                 x-transition:enter="transition ease-out duration-700"
-                                 x-transition:enter-start="opacity-0 translate-x-4"
-                                 x-transition:enter-end="opacity-100 translate-x-0"
-                                 class="absolute inset-0 w-full h-full object-cover p-4" 
-                                 alt="Herz P1 Smart Ring Galerie">
-                        </template>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- Purchase Options Section (Original Structure) -->
-        <section id="options" class="mb-16 md:mb-24 py-8 md:py-16 scroll-mt-24">
-            <h2 class="text-3xl md:text-5xl font-black text-center mb-4 font-serif-display text-black tracking-tight">Wählen Sie Ihr Modell</h2>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10 items-stretch">
-                
-                <!-- OPTION 1 -->
-                <div class="bg-white rounded-[2rem] p-8 md:p-10 border-4 border-black shadow-xl relative flex flex-col z-10 lg:scale-105">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-[#F7EFDF] text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-widest whitespace-nowrap shadow-md">EMPFOHLENE OPTION</div>
-                    <div class="mb-6">
-                        <h3 class="text-xl md:text-2xl font-black text-black uppercase leading-tight mb-1">DUO PACK (2 RINGE)</h3>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-tighter">MAXIMALE ERSPARNIS</p>
-                    </div>
-                    <p class="text-sm text-slate-600 mb-6 leading-relaxed">Perfekt für Partner oder Freunde. Sichern Sie sich zwei Ringe zum absoluten Bestpreis.</p>
-                    <ul class="space-y-4 mb-8 text-sm font-bold text-slate-700 flex-grow">
-                        <li class="flex items-start gap-2"><span class="text-black text-lg leading-none">✓</span> <span>70% Rabatt bereits abgezogen</span></li>
-                        <li class="flex items-start gap-2"><span class="text-black text-lg leading-none">✓</span> <span>2x USB-C Ladestation inklusive</span></li>
-                        <li class="flex items-start gap-2 text-zinc-500"><span class="text-zinc-500 text-lg leading-none">⚠</span> <span>Bestand: NIEDRIG</span></li>
-                    </ul>
-                    <a href="https://vcozy.doctorzakaria.com/l" class="flex items-center justify-center text-center w-full bg-black hover:bg-zinc-800 text-[#F7EFDF] font-black py-5 px-4 rounded-2xl shadow-lg transition-all uppercase tracking-widest text-sm active:scale-95">
-                        JETZT ANGEBOT SICHERN
-                    </a>
-                </div>
-
-                <!-- OPTION 2 -->
-                <div class="bg-white rounded-[2rem] p-8 md:p-10 border border-slate-100 shadow-lg flex flex-col hover:border-black transition-all">
-                    <div class="mb-6">
-                        <h3 class="text-lg md:text-xl font-bold text-slate-800 uppercase leading-tight mb-1">EINZELSTÜCK</h3>
-                        <p class="text-xs font-bold text-black uppercase tracking-tighter">OFFIZIELLE INFOS</p>
-                    </div>
-                    <p class="text-sm text-slate-500 mb-6 leading-relaxed">Ideal für den Einstieg in die Welt der intelligenten Gesundheitsüberwachung.</p>
-                    <a href="https://fji24.doctorthetran.com/l" class="flex items-center justify-center text-center w-full border-2 border-slate-200 text-slate-600 hover:border-black hover:text-black font-bold py-5 px-4 rounded-xl transition-all uppercase tracking-widest text-sm active:scale-95">
-                        ZUR PRODUKTSEITE
-                    </a>
-                </div>
-
-                <!-- OPTION 3 -->
-                <div class="bg-black rounded-[2rem] p-8 md:p-10 text-[#F7EFDF] flex flex-col shadow-xl">
-                    <div class="mb-6">
-                        <h3 class="text-lg md:text-xl font-bold uppercase leading-tight mb-1">FAMILY PACK</h3>
-                        <p class="text-[9px] font-bold text-zinc-400 uppercase tracking-tighter">SPEZIALPREIS</p>
-                    </div>
-                    <p class="text-sm text-slate-400 mb-6 leading-relaxed">3 Ringe für die ganze Familie. Inklusive Premium-App-Zugang für alle Nutzer.</p>
-                    <a href="https://89ur4.doctorwso.com/p" class="flex items-center justify-center text-center w-full bg-[#F7EFDF] text-black hover:bg-white font-black py-5 px-4 rounded-xl transition-all uppercase tracking-widest text-sm active:scale-95">
-                        JETZT BESTELLEN
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section (Original Structure) -->
-        <section id="faq" class="mb-16 md:mb-24 max-w-4xl mx-auto px-2">
-            <h2 class="text-3xl md:text-4xl font-black text-center mb-12 font-serif-display text-black">Häufig gestellte Fragen</h2>
-            <div class="space-y-3" x-data="{ active: null }">
-                <div class="bg-white rounded-xl border border-slate-100 overflow-hidden shadow-sm">
-                    <button @click="active = (active === 1 ? null : 1)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" :class="active === 1 ? 'bg-zinc-50' : ''">
+        <!-- FAQ Section -->
+        <section id="faq" class="py-16 md:py-24 max-w-4xl mx-auto px-4 bg-[#F7EFDF]">
+            <h2 class="text-4xl md:text-5xl font-black text-center mb-12 font-serif-display text-black uppercase tracking-tight">Häufig gestellte Fragen</h2>
+            <div class="space-y-4" x-data="{ active: null }">
+                <div class="bg-white rounded-2xl border border-black/5 overflow-hidden shadow-sm">
+                    <button @click="active = (active === 1 ? null : 1)" class="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none" :class="active === 1 ? 'bg-zinc-50' : ''">
                         <span class="font-bold text-slate-800 uppercase tracking-tight">Ist der Ring wasserdicht?</span>
                         <svg :class="{'rotate-180': active === 1}" class="w-5 h-5 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div x-show="active === 1" x-collapse class="px-6 pb-5 text-slate-500 text-sm">
-                        Ja, der Herz P1 ist bis zu 50 Meter wasserdicht (5 ATM). Sie können ihn beim Schwimmen, Duschen oder Händewaschen tragen.
+                    <div x-show="active === 1" x-collapse class="px-8 pb-6 text-slate-500 text-sm">
+                        Ja, der Herz P1 ist bis zu 50 Meter wasserdicht (5 ATM). Er kann problemlos beim Schwimmen oder Duschen getragen werden.
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl border border-slate-100 overflow-hidden shadow-sm">
-                    <button @click="active = (active === 2 ? null : 2)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" :class="active === 2 ? 'bg-zinc-50' : ''">
-                        <span class="font-bold text-slate-800 uppercase tracking-tight">Wie finde ich meine Größe?</span>
+                <div class="bg-white rounded-2xl border border-black/5 overflow-hidden shadow-sm">
+                    <button @click="active = (active === 2 ? null : 2)" class="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none" :class="active === 2 ? 'bg-zinc-50' : ''">
+                        <span class="font-bold text-slate-800 uppercase tracking-tight">Wie ermittle ich meine Größe?</span>
                         <svg :class="{'rotate-180': active === 2}" class="w-5 h-5 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div x-show="active === 2" x-collapse class="px-6 pb-5 text-slate-500 text-sm">
-                        Wir senden Ihnen nach der Bestellung eine Anleitung zur Größenbestimmung. Alternativ bieten wir einen Umtauschservice an, falls der Ring nicht perfekt passt.
+                    <div x-show="active === 2" x-collapse class="px-8 pb-6 text-slate-500 text-sm">
+                        Wir senden Ihnen nach der Bestellung ein Größenmessset zu, falls Sie Ihre Größe nicht kennen, oder Sie nutzen unsere Größentabelle in der Bestätigungsmail.
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Floating Footer CTA (Original Structure) -->
-    <div class="fixed bottom-0 left-0 right-0 glass border-t border-black/5 p-3 md:p-5 z-50 shadow-lg">
+    <!-- Floating Footer CTA -->
+    <div class="fixed bottom-0 left-0 right-0 glass border-t border-white/10 p-4 md:p-6 z-50 shadow-2xl">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 px-2 md:px-4">
-            <div class="flex flex-col text-left">
-                <span class="text-[8px] md:text-[10px] text-slate-400 font-bold line-through uppercase">UVP: 166,00 €</span>
-                <span class="text-lg md:text-2xl font-black text-black">49,99 € <span class="text-[8px] md:text-[10px] text-slate-500 uppercase ml-1">pro Ring</span></span>
+            <div class="hidden sm:flex flex-col text-left">
+                <span class="text-[9px] text-white/50 font-bold line-through uppercase tracking-widest">UVP: 266,00 €</span>
+                <span class="text-xl md:text-2xl font-black text-[#F7EFDF]">AB €49,99 <span class="text-[9px] text-white/70 uppercase ml-1">pro Ring</span></span>
             </div>
-            <a href="https://vcozy.doctorzakaria.com/l" class="flex-1 max-w-lg bg-black text-[#F7EFDF] text-center font-black py-3 md:py-4 rounded-lg shadow-xl uppercase tracking-widest text-[10px] md:text-lg active:scale-95">
+            <a href="#options" class="flex-1 max-w-lg bg-[#F7EFDF] text-black text-center font-black py-4 md:py-5 rounded-full shadow-xl uppercase tracking-widest text-[11px] md:text-sm active:scale-95 hover:bg-white transition-all">
                 JETZT 70% RABATT SICHERN →
             </a>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white py-12 px-6 border-t border-slate-100">
+    <footer class="bg-black py-20 px-6">
         <div class="max-w-7xl mx-auto text-center">
-            <div class="flex flex-wrap justify-center gap-6 mb-8 text-[10px] font-black uppercase text-slate-400 tracking-widest">
-                <button @click="openPolicy('shipping', 'Versand')" class="hover:text-black">Versand</button>
-                <button @click="openPolicy('contact', 'Impressum')" class="hover:text-black">Kontakt</button>
-                <button @click="openPolicy('privacy', 'Datenschutz')" class="hover:text-black">Datenschutz</button>
+            <div class="flex flex-wrap justify-center gap-8 mb-12 text-[10px] font-black uppercase text-zinc-500 tracking-[0.3em]">
+                <button @click="openPolicy('shipping', 'Versand')" class="hover:text-white transition-colors">Versand</button>
+                <button @click="openPolicy('contact', 'Impressum')" class="hover:text-white transition-colors">Impressum</button>
+                <button @click="openPolicy('privacy', 'Datenschutz')" class="hover:text-white transition-colors">Datenschutz</button>
             </div>
 
-            <p class="text-[10px] text-slate-500 mb-8 max-w-4xl mx-auto italic text-left border-t border-slate-50 pt-8 uppercase tracking-tighter">
-                *WICHTIGER HINWEIS: Ergebnisse können variieren. Der Herz P1 ist ein Wellness-Produkt und kein medizinisches Gerät. Konsultieren Sie immer einen Arzt bei gesundheitlichen Fragen.
+            <p class="text-[10px] text-zinc-600 mb-12 max-w-4xl mx-auto italic text-left border-t border-white/5 pt-12 uppercase tracking-tighter">
+                *WICHTIGER HINWEIS: Der Herz P1 ist ein Wellness-Produkt und kein Medizinprodukt. Er dient der allgemeinen Gesundheitsförderung. Konsultieren Sie immer einen Arzt bei gesundheitlichen Fragen.
             </p>
 
-            <div class="text-[9px] font-bold text-slate-400 tracking-widest">
+            <div class="text-[9px] font-bold text-zinc-700 tracking-[0.4em] uppercase">
                 <p>HERZ TECHNOLOGIES | support@herz-p1.de</p>
                 <p>&copy; 2026 HERZ P1. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modals (Original Structure) -->
+    <!-- Modals -->
     <div x-show="showModal" class="fixed inset-0 z-[100] overflow-y-auto" x-cloak>
         <div class="flex items-center justify-center min-h-screen px-4 text-center sm:block sm:p-0">
-            <div x-show="showModal" @click="closePolicy()" class="fixed inset-0 bg-black/80 backdrop-blur-sm"></div>
-            <div x-show="showModal" class="inline-block px-6 py-8 overflow-hidden text-left align-bottom transition-all transform bg-[#F7EFDF] rounded-3xl shadow-2xl sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-xl font-black text-black font-serif-display uppercase" x-text="modalTitle"></h3>
+            <div x-show="showModal" @click="closePolicy()" class="fixed inset-0 bg-black/90 backdrop-blur-md"></div>
+            <div x-show="showModal" class="inline-block px-8 py-12 overflow-hidden text-left align-bottom transition-all transform bg-[#F7EFDF] rounded-[3rem] shadow-2xl sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+                <div class="flex justify-between items-center mb-10">
+                    <h3 class="text-2xl font-black text-black font-serif-display uppercase tracking-tight" x-text="modalTitle"></h3>
                     <button @click="closePolicy()" class="text-black hover:scale-110 transition-transform bg-black/5 p-2 rounded-full">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
                 </div>
-                <div class="mt-2 policy-content text-slate-600 text-xs md:text-sm max-h-[60vh] overflow-y-auto pr-4">
+                <div class="mt-2 policy-content text-slate-600 text-sm max-h-[60vh] overflow-y-auto pr-6">
                     <p>Informationen zu unseren Geschäftsbedingungen und Datenschutzrichtlinien für den Herz P1 Smart Ring.</p>
+                    <h2>Widerrufsrecht</h2>
+                    <p>Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
                 </div>
-                <div class="mt-8"><button @click="closePolicy()" class="w-full py-4 text-xs font-black text-[#F7EFDF] bg-black rounded-xl uppercase tracking-widest">Schließen</button></div>
+                <div class="mt-12"><button @click="closePolicy()" class="w-full py-5 text-xs font-black text-[#F7EFDF] bg-black rounded-full uppercase tracking-[0.2em]">Fenster schließen</button></div>
             </div>
         </div>
     </div>
